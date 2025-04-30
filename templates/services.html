@@ -1,0 +1,521 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Services</title>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href=""> <img src="\static\images\logonew.png" alt="" style="height: 45px; width: 180px;"> </a>
+
+        <ul class="nav-links">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'services' %}">Services</a></li>
+            <li><a href="{% url 'aboutus' %}">About</a></li>
+            <li><a href="{% url 'contactus' %}">Contact</a></li>
+        </ul>
+
+        <div class="cta-buttons">
+            <a href="{% url 'task_register'%}" class="btn btn-tasker">Become Tasker</a>
+        </div>
+		
+        <div class="menu-toggle">☰</div>
+    </nav>
+
+
+    <section class="hero" style="margin-top: 7%;">
+        <h1>Find and book taskers in minutes</h1>
+        <div class="search-box">
+            <input type="text" placeholder="What do you need help with?">
+            <button>Search</button>
+        </div>
+    </section>
+
+
+    <div class="services-nav" style="margin: 20px; margin-top: 7%;">
+        <div onclick="showService('assembly')" class="active">Assembly</div>
+        <div onclick="showService('mounting')">Mounting</div>
+        <div onclick="showService('moving')">Moving</div>
+        <div onclick="showService('cleaning')">Cleaning</div>
+        <div onclick="showService('outdoor')">Outdoor</div>
+        <div onclick="showService('home_repair')">Home Repair</div>
+        <div onclick="showService('painting')">Painting</div>
+    </div>
+
+    <div id="assembly" class="service-content active">
+        <h2 style="margin-bottom: 20px;">Assembly Services</h2>
+        
+        <div class="sub-services">
+            <div onclick="showDetails('General Furniture Assembly')">General Furniture Assembly</div>
+            <div onclick="showDetails('IKEA Assembly')">IKEA Assembly</div>
+            <div onclick="showDetails('Crib Assembly')">Crib Assembly</div>
+            <div onclick="showDetails('PAX Assembly')">PAX Assembly</div>
+            <div onclick="showDetails('Bookshelf Assembly')">Bookshelf Assembly</div>
+            <div onclick="showDetails('Desk Assembly')">Desk Assembly</div>
+        </div>
+    
+        <div class="service-container">
+            <div class="service-details">
+                <img src="/static/images/project1.jpg" alt="Furniture Assembly">
+                <div class="text-box">
+                    <h3>Assembly</h3>
+                    <ul>
+                        <li>✔ Assemble or disassemble furniture items by unboxing, building, and any cleanup.</li>
+                        <li>✔ Now Trending: Curved sofas, computer desks, and sustainable materials.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div id="mounting" class="service-content">
+        <h2 style="margin-bottom: 20px;">Mounting Services</h2>
+        <div class="sub-services">
+            <div onclick="showDetails('Hang Art ,Mirror & Decor')">Hang Art ,Mirror & Decor</div>
+            <div onclick="showDetails('Install Blinds, Windows Treatment')">Install Blinds, Windows Treatment </div>
+            <div onclick="showDetails('Mount & Anchor Furniture')">Mount & Anchor Furniture</div>
+            <div onclick="showDetails('Install Shelves,Rods & Hooks')">Install Shelves,Rods & Hooks</div>
+            <div onclick="showDetails('Tv Mounting')">Tv Mounting</div>
+            <div onclick="showDetails('Other Mounting')">Other Mounting</div>
+        </div>
+        <div class="service-container">
+            <div class="service-details">
+                <img src="/static/images/project5.jpg" alt="Furniture Assembly">
+                <div class="text-box">
+                    <h3>Mounting</h3>
+                    <ul>
+                        <li>✔ Securely mount your TV, shelves, art, mirrors, dressers, and more.</li>
+                        <li>✔ Now Trending: Gallery walls, art TVs, and wraparound bookcases.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="moving" class="service-content">
+        <h2 style="margin-bottom: 20px;">Moving Services</h2>
+        <div class="sub-services">
+            <div onclick="showDetails('Help Moving')">Help Moving</div>
+            <div onclick="showDetails('Truck Assisted Moving')">Truck Assisted Moving</div>
+            <div onclick="showDetails('Trash & Furniture Moving')">Trash & Furniture Moving</div>
+            <div onclick="showDetails('Heavyy Lifting & Loading')">Heavyy Lifting & Loading</div>
+            <div onclick="showDetails('Rearrange Furniture')">Rearrange Furniture</div>
+            <div onclick="showDetails('Junk Haul Away')">Junk Haul Away</div>
+        </div>
+        <div class="service-container">
+            <div class="service-details">
+                <img src="/static/images/project9.jpg" alt="Furniture Assembly">
+                <div class="text-box">
+                    <h3>Moving</h3>
+                    <ul>
+                        <li>✔ Moving help such as packing/unpacking, loading, and lifting heavy items.</li>
+                        <li>✔ Now Trending: Curved sofas, computer desks, and sustainable materials.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="cleaning" class="service-content">
+        <h2 style="margin-bottom: 20px;">Cleaning Services</h2>
+        <div class="sub-services">
+            <div onclick="showDetails('Cleaning')">Cleaning</div>
+            <div onclick="showDetails('Spring Clean')">Spring Clean</div>
+            <div onclick="showDetails('Deep Clean')">Deep Clean</div>
+            <div onclick="showDetails('Apartment Cleaning')">Apartment Cleaning</div>
+            <div onclick="showDetails('Garage Cleaning')">Garage Cleaning</div>
+            <div onclick="showDetails('Move out clean')">Move out clean</div>
+        </div>
+        <div class="service-container">
+            <div class="service-details">
+                <img src="/static/images/project5.jpg" alt="Furniture Assembly">
+                <div class="text-box">
+                    <h3>Cleaning</h3>
+                    <ul>
+                        <li>✔ Clean your home or office; deep clean appliances and other spaces.</li>
+                        <li>✔ Now Trending: Eco-friendly products, home cleaning checklists, and cleaning hacks.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="outdoor" class="service-content">
+        <h2 style="margin-bottom: 20px;">Outdoor Services</h2>
+        <div class="sub-services">
+            <div onclick="showDetails('Yard Work')">Yard Work</div>
+            <div onclick="showDetails('Lawn Care')">Lawn Care</div>
+            <div onclick="showDetails('Landscaping')">Landscaping</div>
+            <div onclick="showDetails('Branch & Hedge Trimming')">Branch & Hedge Trimming</div>
+            <div onclick="showDetails('Gardening &vWeeeding')">Gardening &vWeeeding</div>
+            <div onclick="showDetails('Snow Removal')">Snow Removal</div>
+        </div>
+        <div class="service-container">
+            <div class="service-details">
+                <img src="/static/images/project6.jpg" alt="Furniture Assembly">
+                <div class="text-box">
+                    <h3>Outdoor</h3>
+                    <ul>
+                        <li>✔ Outdoor help like gardening, weeding, gutter cleaning, and mowing the lawn.</li>
+                        <li>✔ Now Trending: Native plants, enhanced walkways, and outdoor lighting installation.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="home_repair" class="service-content">
+        <h2 style="margin-bottom: 20px;">Home Repair Services</h2>
+        <div class="sub-services">
+            <div onclick="showDetails('Door Cabinet &Furniture Repair')">Door Cabinet &Furniture Repair</div>
+            <div onclick="showDetails('Wall  Repair')">Wall  Repair</div>
+            <div onclick="showDetails('ceiling & Cauking')">ceiling & Cauking </div>
+            <div onclick="showDetails('Appiliance installation & Repair')">Appiliance installation & Repair</div>
+            <div onclick="showDetails('Flooring & Tiling Repair')">Flooring & Tiling Repair</div>
+            <div onclick="showDetails('Window & Blind Repair')">Window & Blind Repair</div>
+            <div onclick="showDetails('Eelectrical Repair')">Eelectrical Repair</div>
+            <div onclick="showDetails('Plumbing  Repair')">Plumbing  Repair</div>
+        </div>
+        <div class="service-container">
+            <div class="service-details">
+                <img src="/static/images/project7.jpg" alt="Furniture Assembly">
+                <div class="text-box">
+                    <h3>Home Repair</h3>
+                    <ul>
+                        <li>✔ Home improvements like plumbing, electrical, and appliance installation.</li>
+                        <li>✔ Now Trending: Chandeliers, brass faucets, and smart toilets.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="painting" class="service-content">
+        <h2 style="margin-bottom: 20px;">Painting Services</h2>
+        <div class="sub-services">
+            <div onclick="showDetails('Indoor Painting')">Indoor Painting</div>
+            <div onclick="showDetails('Wallpapering')">Wallpapering</div>
+            <div onclick="showDetails('Outdoor Painting')">Outdoor Painting</div>
+            <div onclick="showDetails('Concreate & Brick Painting')">Concreate & Brick Painting</div>
+            <div onclick="showDetails('Accent Wall Painting')">Accent Wall Painting</div>
+            <div onclick="showDetails('Wallpaper Removal')">Wallpaper Removal</div>
+        </div>
+        <div class="service-container">
+            <div class="service-details">
+                <img src="/static/images/project8.jpg" alt="Furniture Assembly">
+                <div class="text-box">
+                    <h3>Painting</h3>
+                    <ul>
+                        <li>✔ Assemble or disassemble furniture items by unboxing, building, and any cleanup.</li>
+                        <li>✔ Now Trending: Curved sofas, computer desks, and sustainable materials.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="service-section">
+        <div class="service-stats">
+            <div class="stat-item">
+                <h3>Furniture</h3>
+                <p>Assembles: <span>3.4 million+</span></p>
+            </div>
+            <div class="stat-item">
+                <h3>Moving tasks:</h3>
+                <p><span>1.5 million+</span></p>
+            </div>
+            <div class="stat-item">
+                <h3>Items mounted:</h3>
+                <p><span>1 million+</span></p>
+            </div>
+            <div class="stat-item">
+                <h3>Home Repairs:</h3>
+                <p><span>700,000+</span></p>
+            </div>
+            <div class="stat-item">
+                <h3>Homes cleaned:</h3>
+                <p><span>890,000+</span></p>
+            </div>
+            <div class="stat-item logo">
+                <p>Assembly service provided for</p>
+                <img src="/static\images\ikea_logo.jpg" alt="IKEA Logo" width="50">
+            </div>
+        </div>
+        <div class="rating-section">
+            <p>Excellent <span>★★★★★</span> 41,600 reviews on <a href="#">Trustpilot</a></p>
+        </div>
+    </section>
+
+
+    <!-- testimonial section -->
+
+    <section class="testimonials-section">
+        <h2 style="color:#2f584f ;">See what happy customers are saying about Taxare</h2>
+        <div class="testimonials-container">
+            <div class="testimonial-item">
+                <p><strong>Elizabeth P.</strong> ★★★★★</p>
+                <p>Vitalii assembled the IKEA Norli drawer chest for me in less than 30 minutes, and he assembled a metal wire shelving unit as well in about 10 minutes. He also fixed a drawer on an already assembled desk so it...</p>
+                <p class="category">IKEA Furniture Assembly</p>
+            </div>
+            <div class="testimonial-item">
+                <p><strong>Tiffany B.</strong> ★★★★★</p>
+                <p>David did an awesome job assembling crib and dresser for nursery. Really appreciate this! He cleaned up the area after his work, organized the boxes for easy disposal and went through the...</p>
+                <p class="category">Furniture Assembly</p>
+            </div>
+            <div class="testimonial-item">
+                <p><strong>Amanda L.</strong> ★★★★★</p>
+                <p>I hired Joe to patch 2 holes on my wall and 1 hole on my ceiling. Joe was great with communication, was fast, professional and did a fantastic job. He even came back to do a second layer on the patches to ma...</p>
+                <p class="category">Home Repairs</p>
+            </div>
+            <div class="testimonial-item">
+                <p><strong>Sabrina K.</strong> ★★★★★</p>
+                <p>Aleksandr was fantastic! He came with all the equipment to do the job, even the hardware I didn’t know I would need. He hung a heavy chandelier perfectly and fixed a cabinet to our wall. 100% would hir...</p>
+                <p class="category">Electrical Help</p>
+            </div>
+            <div class="testimonial-item">
+                <p><strong>Jana T.</strong> ★★★★★</p>
+                <p>Jose fixed my AC drain line which was clogging my master bathroom sink. He was prompt, communicative, and efficient. Highly recommend.</p>
+                <p class="category">Plumbing</p>
+            </div>
+            <div class="testimonial-item">
+                <p><strong>Elisa R.</strong> ★★★★★</p>
+                <p>Michael did a great job helping us install frameless glass hinged shower doors with an unusual set up. He was patient and willing to help figure it out with us. Thank you Michael!</p>
+                <p class="category">General Mounting</p>
+            </div>
+        </div>
+    </section>
+
+
+<!-- Motto section start -->
+
+<section class="satisfaction-section">
+    <h1 style="color: black;">Your satisfaction, guaranteed</h1>
+    <div class="container">
+        <div class="column">
+            <h2>Happiness Pledge</h2>
+            <p>If you're not satisfied, we'll work to make it right.</p>
+            <!-- <div class="pledge-icon">✔ Happiness pledge</div> -->
+        </div>
+        <div class="column">
+            <h2>Vetted Taskers</h2>
+            <p>Taskers are always background checked before joining the platform.</p>
+        </div>
+        <div class="column">
+            <h2>Dedicated Support</h2>
+            <p>Friendly service when you need us - every day of the week.</p>
+        </div>
+    </div>
+</section>
+
+ <!-- Motto Section Ends -->
+
+ <!-- how its work -->
+
+ <section class="how-it-works">
+    <div class="content-box">
+        <h2>How it works</h2>
+        <div class="step">
+            <div class="step-number">1</div>
+            <p>Choose a Tasker by price, skills, and reviews.</p>
+        </div>
+        <div class="step">
+            <div class="step-number">2</div>
+            <p>Schedule a Tasker as early as today.</p>
+        </div>
+        <div class="step">
+            <div class="step-number">3</div>
+            <p>Chat, pay, tip, and review all in one place.</p>
+        </div>
+    </div>
+    <div class="image-container">
+        <img src="https://img.freepik.com/free-photo/pretty-attractive-woman-with-dark-hair-wearing-white-shirt-is-looking-smartphone-recipe-woman-kitchen-with-fresh-vegetables-cooking_291650-2502.jpg?t=st=1743448340~exp=1743451940~hmac=da554d393c9ae428c2531e343e2b1553afc3ea4cda185b4d70a621f031fe4688&w=996" alt="Person using phone">
+    </div>
+</section>
+
+
+
+
+
+
+  <!-- How its work -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <a href=""> <img src="\static\images\logonew.png" alt="" style="height: 45px; width: 130px;"> </a>
+                <p style="padding-bottom: 20px;">Get It Done with Taxare.</p>
+                <h3>Subscribe Now</h3>
+                <div class="subscribe-box">
+                    <input type="email" placeholder="Enter your Email">
+                    <button>Subscribe</button>
+                </div>
+            </div>
+    
+            <div class="footer-column">
+                <h3>Information</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">More Search</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Testimonials</a></li>
+                    <li><a href="#">Events</a></li>
+                </ul>
+            </div>
+    
+            <div class="footer-column">
+                <h3>Helpful Links</h3>
+                <ul>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+    
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <p>📞 +91 9999 999 999</p>
+                <p>📧 support@taxare.com</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-google"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="footer-bottom">
+            2025 © Taxare | All Rights Reserved.  
+            <span><a href="#">FAQ</a> | <a href="#">Privacy</a> | <a href="#">Terms & Condition</a></span>
+        </div>
+    </footer>
+    
+    
+    
+    
+      <!-- footer section ends -->
+
+
+
+
+    <script>
+        function showService(service) {
+            let contents = document.querySelectorAll('.service-content');
+            let tabs = document.querySelectorAll('.services-nav div');
+
+            contents.forEach(content => content.classList.remove('active'));
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            document.getElementById(service).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function showDetails(serviceName) {
+            let details = document.getElementById("service-details");
+            details.innerHTML = `<h3>${serviceName}</h3><p>We provide expert ${serviceName} services with top quality work.</p>`;
+        }
+    </script>
+
+</body>
+</html>

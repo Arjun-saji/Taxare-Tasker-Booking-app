@@ -1,0 +1,649 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <!-- <link rel="stylesheet" href="styles.css"> -->
+<script src="script.js"></script>
+
+</head>
+<body>
+    <!-- Navbar -->
+
+  <nav class="navbar">
+    <a href=""> <img src="\static\images\logonew.png" alt="" style="height: 45px; width: 180px;"> </a>
+    <ul class="nav-links">
+      <li><a href="{% url 'home' %}">Home</a></li>
+      <li><a href="{% url 'services' %}">Services</a></li>
+      <li><a href="{% url 'aboutus' %}">About</a></li>
+      <li><a href="{% url 'contactus' %}">Contact</a></li>
+  </ul>
+
+    <div class="cta-buttons">
+       
+        <a href="{% url 'customer_view' %}" class="btn btn-tasker"><i class="fas fa-user-circle"></i> Profile</a>
+    </div>
+
+    <div class="menu-toggle">☰</div>
+</nav>
+
+
+
+
+  <!-- Main -->
+  <div class="container mt-4">
+ 
+     <div class="row ">
+    <div class="col-lg-9 mx-auto text-white text-center">
+  </div>
+    <div class="col-lg-8 mx-auto" style="margin-top: 70px;">
+        <form action="">
+          <div class="input-group mb-4 border rounded-pill p-1" >
+            <input type="search" placeholder="What do you need help with ?" aria-describedby="button-addon3" class="form-control bg-none border-0">
+            <div class="input-group-append border-0">
+              <button id="button-addon3" type="button" class="btn btn-link text-success"><i class="fa fa-search"></i></button>
+            </div>
+          </div>
+        </form>
+    </div> 
+</div>
+
+
+    <!-- Submission Result -->
+    <div class="submission-result" >
+      <h3>Congratulations!</h3>
+      <p>Thank you for your rental submission. Please wait for our team to contact you shortly.</p>
+    </div>
+
+    <!-- Bicycle Photos -->
+    <div class="row mt-4" >
+        {% for i in services %}
+      <div class="col-md-4">
+       
+        <div class="rental-card" style="margin-top: 20px;">
+         
+          {% if i.image %}
+          <img src="{{ i.image.url }}" style="height: 200px; width: 300px;"   class="img-fluid" alt="{{ i.name }}">
+        {% else %}
+          <img src="{% static 'images/default-service.jpg' %}" style="height: 200px; width: 300px;" class="img-fluid" alt="Default Image">
+        {% endif %}
+          <div class="card-body">
+            <h5 class="card-title" style="text-align: center;"><strong>{{i.name}}</strong></h5>
+            <p class="card-text" style="text-align: center;">starting at <strong>{{i.price}}</strong></p>
+            <a href="{% url 'singlecust' i.id %}" class="btn btn-primary bike-details-toggle" style="margin-left: 100px;" data-bike="mountain-bike"><i class="fas fa-info-circle me-2"></i>Details</a>
+            <div class="bike-details" id="mountain-bike-details">
+              <p>{{i.description}}</p>
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+      {% endfor %}
+    </div>
+    
+  </div>
+
+  
+ <!-- footer sectioin Start -->
+
+ <footer class="footer" style="margin-top: 40px;">
+  <div class="footer-container">
+      <div class="footer-column">
+          <a href=""> <img src="\static\images\logonew.png" alt="" style="height: 45px; width: 130px;"> </a>
+          <p style="padding-bottom: 20px;">Get It Done with Taxare.</p>
+          <h3>Subscribe Now</h3>
+          <div class="subscribe-box">
+              <input type="email" placeholder="Enter your Email">
+              <button>Subscribe</button>
+          </div>
+      </div>
+
+      <div class="footer-column">
+          <h3>Information</h3>
+          <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">More Search</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Testimonials</a></li>
+              <li><a href="#">Events</a></li>
+          </ul>
+      </div>
+
+      <div class="footer-column">
+          <h3>Helpful Links</h3>
+          <ul>
+              <li><a href="#">FAQs</a></li>
+              <li><a href="#">Support</a></li>
+              <li><a href="#">Terms & Conditions</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+          </ul>
+      </div>
+
+      <div class="footer-column">
+          <h3>Contact Us</h3>
+          <p>📞 +91 9999 999 999</p>
+          <p>📧 support@taxare.com</p>
+          <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-google"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+      </div>
+  </div>
+
+  <div class="footer-bottom">
+      2025 © Taxare | All Rights Reserved.  
+      <span><a href="#">FAQ</a> | <a href="#">Privacy</a> | <a href="#">Terms & Condition</a></span>
+  </div>
+</footer>
+
+
+
+
+<!-- footer section ends -->
+
+
+
+
+
+
+ 
+  <style>
+
+.row.py-5 {
+    padding-top: 900px;
+}
+.form-control:focus {
+  box-shadow: none;
+}
+
+.form-control-underlined {
+  border-width: 0;
+  border-bottom-width: 1px;
+  border-radius: 0;
+  padding-left: 0;
+}
+
+
+
+.form-control::placeholder {
+  font-size: 0.95rem;
+  color: #aaa;
+  font-style: italic;
+  padding-left: 80;
+}
+
+body {
+  /* background-image: url('https://cdn.pixabay.com/photo/2023/04/30/07/50/bicycle-7959976_1280.jpg'); */
+  background-color: #e2f3f4;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 50vh;
+}
+
+.submission-result {
+  display: none;
+}
+
+.submission-result.show {
+  display: block;
+  animation: fadeInDown 1s ease;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.bike-details {
+  display: none;
+}
+
+.bike-details.show {
+  display: block;
+}
+
+
+.rental-card {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #dfe6f1;
+}
+
+.bike-details-toggle {
+  display: inline-block;
+  padding: 5px 10px;
+  /* background-color: #007bff; */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* .bike-details-toggle:hover {
+  background-color: #0056b3;
+} */
+
+.bike-details {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+img.img-fluid {
+    height: 220px;
+}
+
+h1 {
+  font-family: 'Arial', sans-serif;
+  font-size: 40px;
+  /* color: #007bff; */
+  margin-bottom: 20px;
+  padding: 10px;
+  /* background-image: linear-gradient(to right, #007bff, #00bfff); */
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradientAnimation 3s linear infinite;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+h1::after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 50px;
+  /* background-color: #007bff; */
+  margin: 10px 0;
+}
+
+
+/* Rentals */
+
+#rental-form {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 1s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-label {
+  /* color: #007bff; */
+  font-weight: bold;
+}
+
+.form-control {
+  background-color: #fff;
+  color: #495057;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.form-select {
+  background-color: #fff;
+  color: #495057;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.btn-primary {
+  color: #2f584f;
+  border-color: #f5d16b;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #f5d16b;
+  color: #2f584f;
+}
+
+.btn-primary i {
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: transparent;
+    backdrop-filter: blur(10px);
+}
+
+.navbar .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    /* color: #007bff; */
+    text-decoration: none;
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    padding-left: 500px;
+    padding-top: 20px;
+    
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: 0.3s;
+   
+}
+
+.nav-links a:hover {
+    color:#f5d16b;
+}
+
+/* CTA Buttons */
+.cta-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    padding: 8px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+    border: 2px solid transparent;
+}
+
+.btn-tasker {
+    /* color: #f5d16b; */
+    color: #2f584f;
+    border-color: #f5d16b;
+}
+
+.btn-tasker:hover {
+    background-color: #f5d16b;
+    color: #2f584f;
+}
+
+.btn-client {
+    color: #ff9800;
+    border-color: #ff9800;
+}
+
+.btn-client:hover {
+    background-color: #ff9800;
+    color: white;
+}
+
+/* Mobile Menu */
+.menu-toggle {
+    display: none;
+    font-size: 1.8em;
+    cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(5px);
+        border-radius: 8px;
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+
+  }
+    /* end navbar */
+
+
+
+
+/* Footer Styling */
+.footer {
+    background: #c5dcdf;
+    color: black;
+    padding: 50px 5%;
+    display: flex;
+    flex-direction: column;
+    min-height: 40vh;
+    justify-content: space-between;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 200px;
+    margin: 20px;
+}
+
+.footer-column h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin: 8px 0;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+    color: #333;
+}
+
+/* Subscription Box */
+.subscribe-box {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 5px;
+    overflow: hidden;
+    background: white;
+}
+
+.subscribe-box input {
+    border: none;
+    padding: 10px;
+    width: 100%;
+    outline: none;
+}
+
+.subscribe-box button {
+    background: black;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.subscribe-box button:hover {
+    background: #333;
+}
+
+/* Social Icons */
+.social-icons {
+    margin-top: 15px;
+}
+
+.social-icons a {
+    display: inline-block;
+    margin: 0 5px;
+    color: black;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #555;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    margin-top: 10px;
+    border-top: 1px solid #ccc;
+    padding-top: 15px;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .subscribe-box {
+        justify-content: center;
+    }
+
+    .subscribe-box input {
+        width: 80%;
+    }
+}
+/* footer section end */
+
+
+
+
+
+    
+
+
+
+
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+  </script>
+  <script src="script.js"></script>
+
+  <script type="text/javascript">
+    // Handle form submission
+const rentalForm = document.getElementById('rental-form');
+const submissionResult = document.querySelector('.submission-result');
+
+rentalForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  // Get form values
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const destination = document.getElementById('destination').value;
+  const bike = document.getElementById('bike').value;
+  const price = document.getElementById('price').value;
+
+  // Display submission result
+  submissionResult.classList.add('show');
+  rentalForm.reset();
+});
+
+// Handle bike details toggle
+const bikeDetailsToggle = document.querySelectorAll('.bike-details-toggle');
+bikeDetailsToggle.forEach(function(element) {
+  element.addEventListener('click', function(e) {
+    e.preventDefault();
+    const bikeId = this.getAttribute('data-bike');
+    const bikeDetails = document.getElementById(bikeId + '-details');
+    bikeDetails.classList.toggle('show');
+  });
+});
+
+  </script>
+</body>
+
+
+</html>

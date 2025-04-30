@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Registration</title>
+</head>
+<body>
+    <h2>Register as a Customer</h2>
+    <form method="POST" >
+        {% csrf_token %}
+        <label>Username:</label>
+        <input type="text" name="username" required><br>
+        
+        <label>Email:</label>
+        <input type="email" name="email" required><br>
+        
+        <label>Password:</label>
+        <input type="password" name="password" required><br>
+        
+        <!-- Hidden field to mark the user as a customer -->
+        <input type="hidden" name="is_customer" value="True">
+        
+        <button type="submit">Register as Customer</button>
+    </form>
+</body>
+</html>

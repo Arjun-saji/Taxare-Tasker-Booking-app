@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+	<title>Home Taxare</title>
+</head>
+<body>
+
+    <nav class="navbar">
+        <!-- <a    href="#" class="logo">Taxare</a> -->
+         <a href=""> <img src="\static\images\logonew.png" alt="" style="height: 45px; width: 180px;"> </a>
+
+        <ul class="nav-links">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'services' %}">Services</a></li>
+            <li><a href="{% url 'aboutus' %}">About</a></li>
+            <li><a href="{% url 'contactus' %}">Contact</a></li>
+        </ul>
+
+        <div class="cta-buttons">
+            <a href="{% url 'task_register'%}" class="btn btn-tasker">Become Tasker</a>
+        </div>
+		
+        <div class="menu-toggle">☰</div>
+    </nav>
+	
+	 <!-- Hero Section with Search -->
+	 <section class="hero">
+        <h1>Find and book taskers in minutes</h1>
+        <div class="search-box">
+            <input type="text" placeholder="What do you need help with?">
+            <button>Search</button>
+        </div>
+    </section>
+
+
+	<!-- slider section start -->
+
+	<section class="services1 section-padding" style="margin: 20px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12-text-center-mb-30">
+                    <div class="section-title3" style="text-align: center;"></div> 
+                    <p>Quick,Reliable and hassile-free services at  your finger tips.</p>
+                </div>
+            </div>
+        </div>
+        <div class="full-width">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="owl-carousel owl-theme">
+                        <div class="item">
+                            <a href="">
+                                <div class="wrap">
+                                    <div class="wrapper-img" style="border-radius: 15px;">
+                                        <img  src="\static\images\slider_image1.jpg" class="img-fluid rounded-1" alt="Agricultural Applications">
+                                    </div>
+									<div class="wrapper-title">
+                                        <div class="btn-group">
+											<a href="{% url 'task_register'%}" class="btn btn-primary">Login / Signup as Tasker</a>
+											<a href="{% url 'customer_register'%}"class="btn btn-secondary">Login / Signup as Client</a>
+										</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="">
+                                <div class="wrap">
+                                    <div class="wrapper-img" style="border-radius: 15px;">
+                                        <img src="\static\images\slider_image2.jpg" class="img-fluid rounded-1" alt="Commercial Vehicles">
+                                    </div>
+									<div class="wrapper-title">
+                                        <div class="btn-group">
+											<a href="{% url 'task_register'%}" class="btn btn-primary">Login / Signup as Tasker</a>
+											<a href="{% url 'customer_register'%}"class="btn btn-secondary">Login / Signup as Client</a>
+										</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="">
+                                <div class="wrap">
+                                    <div class="wrapper-img" style="border-radius: 15px;">
+                                        <img src="\static\images\slider_image3.jpg" class="img-fluid rounded-1" alt="Construction Vehicles">
+                                    </div>
+									<div class="wrapper-title">
+                                        <div class="btn-group">
+											<a href="{% url 'task_register'%}" class="btn btn-primary">Login / Signup as Tasker</a>
+											<a href="{% url 'customer_register'%}"class="btn btn-secondary">Login / Signup as Client</a>
+										</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="products.html">
+                                <div class="wrap">
+                                    <div class="wrapper-img" style="border-radius: 15px;">
+                                        <img src="\static\images\slider_image4.jpg" class="img-fluid rounded-1" alt="Off Road Vehicles">
+                                    </div>
+                                    <div class="wrapper-title">
+                                        <div class="btn-group">
+											<a href="{% url 'task_register'%}" class="btn btn-primary">Login / Signup as Tasker</a>
+											<a href="{% url 'customer_register'%}"class="btn btn-secondary">Login / Signup as Client</a>
+										</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="products.html">
+                                <div class="wrap">
+                                    <div class="wrapper-img" style="border-radius: 15px;">
+                                        <img  src="\static\images\slider_img5.jpg" class="img-fluid rounded-1" alt="Passenger Vehicles">
+                                    </div>
+									<div class="wrapper-title">
+                                        <div class="btn-group">
+											<a href="{% url 'task_register'%}" class="btn btn-primary">Login / Signup as Tasker</a>
+											<a href="{% url 'customer_register'%}"class="btn btn-secondary">Login / Signup as Client</a>
+										</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="products.html">
+                                <div class="wrap">
+                                    <div class="wrapper-img" style="border-radius: 15px;">
+                                        <img src="\static\images\slider_image6.jpg" class="img-fluid rounded-1" alt="Special Purpose Vehicles">
+                                    </div>
+                                    <div class="wrapper-title">
+                                        <div class="btn-group">
+											<a href="{% url 'task_register'%}" class="btn btn-primary">Login / Signup as Tasker</a>
+											<a href="{% url 'customer_register'%}"class="btn btn-secondary">Login / Signup as Client</a>
+										</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="products.html">
+                                <div class="wrap">
+                                    <div class="wrapper-img" style="border-radius: 15px;">
+                                        <img src="\static\images\slider_image7.jpg" class="img-fluid rounded-1" alt="Two Wheelers">
+                                    </div>
+									<div class="wrapper-title">
+                                        <div class="btn-group">
+											<a href="{% url 'task_register'%}" class="btn btn-primary">Login / Signup as Tasker</a>
+											<a href="{% url 'customer_register'%}"class="btn btn-secondary">Login / Signup as Client</a>
+										</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+	 <!-- Slider section ENd -->
+
+
+
+
+	 <!-- About Section Start -->
+
+	 <section class="about-us">
+		<div class="about-container">
+			<div class="about-images">
+				
+				<img src="\static\images\about1.jpg" class="img img-1" alt="First Image">
+				<img src="\static\images\about2.jpg" class="img img-2" alt="Second Image">
+				<img src="\static\images\about3.jpg" class="img img-3" alt="Third Image">
+				<img src="\static\images\about4.jpg" class="img img-4" alt="Fourth Image">
+			</div>
+			<div class="about-content">
+				<h2>About Us</h2>
+				<p>
+					"Welcome to Taxare, where convenience meets efficiency!
+					Our mission is to connect customers with skilled taskers seamlessly,
+					nsuring hassle-free service bookings. Whether you need help with home repairs,
+					cleaning, or moving, our trusted professionals are just a click away. 
+					With a secure platform, real-time notifications, and a smooth booking experience,
+					Taxare makes getting things done easier than ever!"<br>
+				</p>
+			
+				<a href="#" class="btnl">Learn More</a>
+			</div>
+		</div>
+	</section>
+
+
+	  <!-- About Section Ends -->
+
+
+<!-- popular projects Start -->
+
+
+<div class="container-class"> 
+<section class="popular">
+    <h2>Popular Projects</h2>
+    <div class="popularcard">
+        <div class="card">
+            <img src="/static\images\project1.jpg" alt="Service 1">
+            <h3>Carpentry</h3>
+            <p>Starting at ₹799.00</p>
+        </div>
+        <div class="card">
+            <img src="/static\images\project2.jpg" alt="Service 2">
+            <h3>Plumbing</h3>
+            <p>Starting at ₹799.00</p>
+        </div>
+        <div class="card">
+            <img src="/static\images\project3.jpg" alt="Service 3">
+            <h3>Baby Sitting</h3>
+            <p>Starting at ₹699.00</p>
+        </div>
+        <div class="card">
+            <img src="/static\images\project4.jpg" alt="Service 4">
+            <h3>Furniture Assembly</h3>
+            <p>Starting at ₹499.00</p>
+        </div>
+        <div class="card">
+            <img src="/static\images\project5.jpg" alt="Service 5">
+            <h3>House Cleaning</h3>
+            <p>Starting at ₹899.00</p>
+        </div>
+        <div class="card">
+            <img src="/static\images\project6.jpg" alt="Service 6">
+            <h3>Tree Trimming</h3>
+            <p>Starting at ₹999.00</p>
+        </div>
+        <div class="card">
+            <img src="/static\images\project7.jpg" alt="Service 7">
+            <h3>Electrical Work</h3>
+            <p>Starting at ₹899.00</p>
+        </div>
+        <div class="card">
+            <img src="/static\images\project8.jpg" alt="Service 8">
+            <h3>Painting</h3>
+            <p>Starting at ₹599.00</p>
+        </div>
+    </div>
+</section>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- popular projects End -->
+
+ <!-- footer sectioin Start -->
+
+ <footer class="footer">
+    <div class="footer-container">
+        <div class="footer-column">
+            <a href=""> <img src="\static\images\logonew.png" alt="" style="height: 45px; width: 130px;"> </a>
+            <p style="padding-bottom: 20px;">Get It Done with Taxare.</p>
+            <h3>Subscribe Now</h3>
+            <div class="subscribe-box">
+                <input type="email" placeholder="Enter your Email">
+                <button>Subscribe</button>
+            </div>
+        </div>
+
+        <div class="footer-column">
+            <h3>Information</h3>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">More Search</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Testimonials</a></li>
+                <li><a href="#">Events</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3>Helpful Links</h3>
+            <ul>
+                <li><a href="#">FAQs</a></li>
+                <li><a href="#">Support</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3>Contact Us</h3>
+            <p>📞 +91 9999 999 999</p>
+            <p>📧 support@taxare.com</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-google"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        2025 © Taxare | All Rights Reserved.  
+        <span><a href="#">FAQ</a> | <a href="#">Privacy</a> | <a href="#">Terms & Condition</a></span>
+    </div>
+</footer>
+
+
+
+
+  <!-- footer section ends -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- <h1>Landing Page</h1>
+	<a href="{% url 'task_register'%}" type="button ">Tasker</a><br>
+	<a href="{% url 'customer_register'%}" type="button" >Client login/signup</a> -->
+
+    <script>
+        document.querySelector(".menu-toggle").addEventListener("click", function() {
+            document.querySelector(".nav-links").classList.toggle("active");
+        });
+    </script>
+	<script>
+		
+        document.addEventListener("DOMContentLoaded", function () {
+    $(".owl-carousel").owlCarousel({
+        loop: true, // Enable looping
+        margin: 20,
+        nav: true,
+        dots: true,
+        autoplay: true, // Enable autoplay
+        autoplayTimeout: 1000, // Time between slides (3 seconds)
+        autoplayHoverPause: true, // Pause on hover
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 2
+            },
+            1000: {
+                items: 3
+            }
+        }
+    });
+});
+    </script>
+	
+
+</body>
+</html>

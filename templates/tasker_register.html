@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tasker Registration</title>
+</head>
+<body>
+    <h2>Register as a Tasker</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label>Username:</label>
+        <input type="text" name="username" required><br>
+        
+        <label>Email:</label>
+        <input type="email" name="email" required><br>
+        
+        <label>Password:</label>
+        <input type="password" name="password" required><br>
+        
+        <!-- Hidden field to mark the user as a tasker -->
+        <input type="hidden" name="is_tasker" value="True">
+        
+        <button  type="submit">Register as Tasker</button>
+    </form>
+
+    <!-- <script>
+    document.querySelector('form').addEventListener('submit', async function(event) {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        
+        const response = await fetch('/api/register/', {
+            method: 'POST',
+            body: JSON.stringify({
+                username: formData.get('username'),
+                email: formData.get('email'),
+                password: formData.get('password'),
+                is_tasker: true
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': formData.get('csrfmiddlewaretoken')
+            }
+        });
+        
+        if (response.ok) {
+            // Redirect to login or success page
+            window.location.href = '/login/';
+        } else {
+            // Handle errors (e.g., show error message)
+            console.error('Registration failed');
+        }
+    });
+</script> -->
+
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!-- {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e2f3f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .services-nav {
+            display: flex;
+            justify-content: center;
+            background: #6dc7d1;
+            padding: 15px;
+        }
+        .services-nav div {
+            margin: 0 10px;
+            padding: 10px 15px;
+            cursor: pointer;
+            background: white;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .services-nav div:hover, .services-nav div.active {
+            background: #0b899f;
+            color: white;
+        }
+        .service-content {
+            margin: 20px auto;
+            width: 80%;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+        .service-content.active {
+            display: block;
+        }
+        .sub-services {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        .sub-services div {
+            padding: 10px;
+            background: #6dc7d1;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .sub-services div:hover {
+            background: #0b899f;
+            color: white;
+        }
+        .service-details {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e2f3f4;
+            border-radius: 10px;
+        }
+        .completed-jobs {
+            margin-top: 15px;
+            background: #0b899f;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="services-nav">
+        <div onclick="showService('assembly')" class="active">Assembly</div>
+        <div onclick="showService('mounting')">Mounting</div>
+        <div onclick="showService('moving')">Moving</div>
+        <div onclick="showService('cleaning')">Cleaning</div>
+        <div onclick="showService('outdoor')">Outdoor</div>
+        <div onclick="showService('home_repair')">Home Repair</div>
+        <div onclick="showService('painting')">Painting</div>
+    </div>
+
+    <div id="assembly" class="service-content active">
+        <h2>Assembly Services</h2>
+        <div class="sub-services">
+            <div onclick="showDetails('General Furniture Assembly')">General Furniture Assembly</div>
+            <div onclick="showDetails('IKEA Assembly')">IKEA Assembly</div>
+            <div onclick="showDetails('Crib Assembly')">Crib Assembly</div>
+            <div onclick="showDetails('PAX Assembly')">PAX Assembly</div>
+            <div onclick="showDetails('Bookshelf Assembly')">Bookshelf Assembly</div>
+            <div onclick="showDetails('Desk Assembly')">Desk Assembly</div>
+        </div>
+        <div class="service-details" id="service-details">
+            <h3>Select a service to see details</h3>
+        </div>
+        <div class="completed-jobs">
+            <h4>Completed Jobs: 500+</h4>
+        </div>
+    </div>
+
+    <div id="mounting" class="service-content">
+        <h2>Mounting Services</h2>
+        <div class="sub-services">
+            <div onclick="showDetails('General Furniture Assembly')">General Furniture Assembly</div>
+            <div onclick="showDetails('IKEA Assembly')">IKEA Assembly</div>
+            <div onclick="showDetails('Crib Assembly')">Crib Assembly</div>
+            <div onclick="showDetails('PAX Assembly')">PAX Assembly</div>
+            <div onclick="showDetails('Bookshelf Assembly')">Bookshelf Assembly</div>
+            <div onclick="showDetails('Desk Assembly')">Desk Assembly</div>
+        </div>
+    </div>
+
+    <div id="moving" class="service-content">
+        <h2>Moving Services</h2>
+        <div class="sub-services">
+            <div onclick="showDetails('General Furniture Assembly')">General Furniture Assembly</div>
+            <div onclick="showDetails('IKEA Assembly')">IKEA Assembly</div>
+            <div onclick="showDetails('Crib Assembly')">Crib Assembly</div>
+            <div onclick="showDetails('PAX Assembly')">PAX Assembly</div>
+            <div onclick="showDetails('Bookshelf Assembly')">Bookshelf Assembly</div>
+            <div onclick="showDetails('Desk Assembly')">Desk Assembly</div>
+        </div>
+    </div>
+
+    <div id="cleaning" class="service-content">
+        <h2>Cleaning Services</h2>
+        <div class="sub-services">
+            <div onclick="showDetails('General Furniture Assembly')">General Furniture Assembly</div>
+            <div onclick="showDetails('IKEA Assembly')">IKEA Assembly</div>
+            <div onclick="showDetails('Crib Assembly')">Crib Assembly</div>
+            <div onclick="showDetails('PAX Assembly')">PAX Assembly</div>
+            <div onclick="showDetails('Bookshelf Assembly')">Bookshelf Assembly</div>
+            <div onclick="showDetails('Desk Assembly')">Desk Assembly</div>
+        </div>
+    </div>
+
+    <div id="outdoor" class="service-content">
+        <h2>Outdoor Services</h2>
+        <div class="sub-services">
+            <div onclick="showDetails('General Furniture Assembly')">General Furniture Assembly</div>
+            <div onclick="showDetails('IKEA Assembly')">IKEA Assembly</div>
+            <div onclick="showDetails('Crib Assembly')">Crib Assembly</div>
+            <div onclick="showDetails('PAX Assembly')">PAX Assembly</div>
+            <div onclick="showDetails('Bookshelf Assembly')">Bookshelf Assembly</div>
+            <div onclick="showDetails('Desk Assembly')">Desk Assembly</div>
+        </div>
+    </div>
+
+    <div id="home_repair" class="service-content">
+        <h2>Home Repair Services</h2>
+        <div class="sub-services">
+            <div onclick="showDetails('General Furniture Assembly')">General Furniture Assembly</div>
+            <div onclick="showDetails('IKEA Assembly')">IKEA Assembly</div>
+            <div onclick="showDetails('Crib Assembly')">Crib Assembly</div>
+            <div onclick="showDetails('PAX Assembly')">PAX Assembly</div>
+            <div onclick="showDetails('Bookshelf Assembly')">Bookshelf Assembly</div>
+            <div onclick="showDetails('Desk Assembly')">Desk Assembly</div>
+        </div>
+    </div>
+
+    <div id="painting" class="service-content">
+        <h2>Painting Services</h2>
+        <div class="sub-services">
+            <div onclick="showDetails('General Furniture Assembly')">General Furniture Assembly</div>
+            <div onclick="showDetails('IKEA Assembly')">IKEA Assembly</div>
+            <div onclick="showDetails('Crib Assembly')">Crib Assembly</div>
+            <div onclick="showDetails('PAX Assembly')">PAX Assembly</div>
+            <div onclick="showDetails('Bookshelf Assembly')">Bookshelf Assembly</div>
+            <div onclick="showDetails('Desk Assembly')">Desk Assembly</div>
+        </div>
+    </div>
+
+    <script>
+        function showService(service) {
+            let contents = document.querySelectorAll('.service-content');
+            let tabs = document.querySelectorAll('.services-nav div');
+
+            contents.forEach(content => content.classList.remove('active'));
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            document.getElementById(service).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function showDetails(serviceName) {
+            let details = document.getElementById("service-details");
+            details.innerHTML = `<h3>${serviceName}</h3><p>We provide expert ${serviceName} services with top quality work.</p>`;
+        }
+    </script>
+
+</body>
+</html> -->

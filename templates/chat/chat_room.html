@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Taxare Chat Room</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #e5ddd5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            color: #075e54;
+            margin-bottom: 10px;
+        }
+
+        #chat-container {
+            background: white;
+            width: 400px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            height: 500px;
+        }
+
+        #chat-log {
+            flex-grow: 1;
+            overflow-y: scroll;
+            padding: 10px;
+            background: #fafafa;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .message {
+            max-width: 70%;
+            padding: 10px;
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+
+        .sent {
+            align-self: flex-end;
+            background-color: #dcf8c6;
+            border-bottom-right-radius: 0;
+        }
+
+        .received {
+            align-self: flex-start;
+            background-color: #ffffff;
+            border-bottom-left-radius: 0;
+        }
+
+        #chat-input-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        #chat-message-input {
+            flex-grow: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #send-btn {
+            padding: 8px 12px;
+            background: #128c7e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #send-btn:hover {
+            background: #075e54;
+        }
+    </style>
+</head>
+<body>
+
+ <div id="chat-container">
+        <h1>Chat Room: {{ room_name }}</h1>
+
+       
+        <div id="chat-log">
+
+            {% for message in messages %}
+            <div class="message {% if message.sender.id == request.user.id %}sent{% else %}received{% endif %}">
+                {{ message.message }}
+            </div>
+        {% empty %}
+            <p>No messages yet. Start the conversation!</p>
+        {% endfor %}
+        
+
+
+
+          
+<!-- 
+            {% for message in messages %}
+                <div class="message {% if message.sender.username == request.user.username %}sent{% else %}received{% endif %}">
+                    {{ message.message }}
+                </div>
+            {% empty %}
+                <p>No messages yet. Start the conversation!</p>
+            {% endfor %} -->
+        </div>
+
+        <div id="chat-input-container">
+            <input id="chat-message-input" type="text" placeholder="Type a message..." autocomplete="off">
+            <button id="send-btn" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <!-- <script>
+        const roomName = "{{ room_name }}";
+        const currentUser = "{{ request.user.username }}"; 
+        const sender = "{{ sender }}";
+        const receiver = "{{ receiver }}";
+
+        let protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
+        let endpoint = protocol + '://' + window.location.host + '/ws/chat/' + roomName + '/';
+        const chatSocket = new WebSocket(endpoint);
+
+        chatSocket.onopen = () => console.log("WebSocket connection established.");
+        chatSocket.onclose = (e) => console.log("WebSocket closed unexpectedly:", e);
+        chatSocket.onerror = (error) => console.error("WebSocket error:", error);
+
+        chatSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+
+            if (data.sender === currentUser) {
+                messageDiv.classList.add('sent');
+            } else {
+                messageDiv.classList.add('received');
+            }
+
+            messageDiv.innerText = data.message;
+            document.querySelector('#chat-log').appendChild(messageDiv);
+            scrollToBottom();
+        };
+
+        function sendMessage() {
+            const messageInput = document.getElementById("chat-message-input");
+            const message = messageInput.value;
+            if (message.trim() === "") return;
+
+            if (chatSocket.readyState === WebSocket.OPEN) {
+                chatSocket.send(JSON.stringify({
+                    'message': message,
+                    'sender': currentUser,
+                    'receiver': receiver
+                }));
+                messageInput.value = '';
+            } else {
+                alert("Connection to server lost. Please refresh the page.");
+                console.error("WebSocket not open. State is:", chatSocket.readyState);
+            }
+        }
+
+        function scrollToBottom() {
+            const log = document.getElementById("chat-log");
+            log.scrollTop = log.scrollHeight;
+        }
+    </script>  -->
+
+    
+    <script>
+        const roomName = "{{ room_name }}";
+        const currentUser = "{{ request.user.username }}"; 
+        const sender = "{{ sender }}";
+        const receiver = "{{ receiver }}";
+    
+        let protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
+        let endpoint = protocol + '://' + window.location.host + '/ws/chat/' + roomName + '/';
+        const chatSocket = new WebSocket(endpoint);
+    
+        chatSocket.onopen = () => console.log("WebSocket connection established.");
+        chatSocket.onclose = (e) => console.log("WebSocket closed unexpectedly:", e);
+        chatSocket.onerror = (error) => console.error("WebSocket error:", error);
+    
+        chatSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+    
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+    
+            // ✅ This part ensures proper alignment (sent or received)
+            if (data.sender === currentUser) {
+                messageDiv.classList.add('sent');
+            } else {
+                messageDiv.classList.add('received');
+            }
+    
+            messageDiv.innerText = data.message;
+    
+            document.querySelector('#chat-log').appendChild(messageDiv);
+            scrollToBottom();
+        };
+    
+        function sendMessage() {
+            const messageInput = document.getElementById("chat-message-input");
+            const message = messageInput.value;
+            if (message.trim() === "") return;
+    
+            if (chatSocket.readyState === WebSocket.OPEN) {
+                chatSocket.send(JSON.stringify({
+                    'message': message,
+                    'sender': currentUser,
+                    'receiver': receiver
+                }));
+                messageInput.value = '';
+            } else {
+                alert("Connection to server lost. Please refresh the page.");
+                console.error("WebSocket not open. State is:", chatSocket.readyState);
+            }
+        }
+    
+        function scrollToBottom() {
+            const log = document.getElementById("chat-log");
+            log.scrollTop = log.scrollHeight;
+        }
+    </script>
+    
+
+
+
+
+
+
+
+</body>
+</html>

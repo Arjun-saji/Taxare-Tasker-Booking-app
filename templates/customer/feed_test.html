@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasker Feed Test</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .booking-entry {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        .status {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Tasker Feed Test</h2>
+        
+        <h3>Tasker: {{ tasker.user.username }}</h3>
+        <p><strong>Email:</strong> {{ tasker.user.email }}</p>
+        <p><strong>Phone:</strong> {{ tasker.phone_number }}</p>
+        
+        <h3>Upcoming & Ongoing Bookings</h3>
+        {% if feed_items %}
+            {% for item in feed_items %}
+                <div class="booking-entry">
+                    <p><strong>Customer:</strong> {{ item.booking.customer.user.username }}</p>
+                    <p><strong>Service:</strong> {{ item.booking.service.name }}</p>
+                    <p><strong>Date:</strong> {{ item.booking.date_booking }}</p>
+                    <p><strong>Time:</strong> {{ item.booking.start_time }} - {{ item.booking.end_time }}</p>
+                    <p class="status"><strong>Status:</strong> {{ item.status }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No bookings found.</p>
+        {% endif %}
+    </div>
+
+    
+
+</body>
+</html>

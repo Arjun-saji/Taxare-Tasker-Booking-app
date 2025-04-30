@@ -1,0 +1,124 @@
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f8f9fa;
+}
+
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: transparent;
+    backdrop-filter: blur(10px);
+}
+
+.navbar .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #007bff;
+    text-decoration: none;
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    padding-left: 1000px;
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #007bff;
+}
+
+/* CTA Buttons */
+.cta-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    padding: 8px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+    border: 2px solid transparent;
+}
+
+.btn-tasker {
+    color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-tasker:hover {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-client {
+    color: #ff9800;
+    border-color: #ff9800;
+}
+
+.btn-client:hover {
+    background-color: #ff9800;
+    color: white;
+}
+
+/* Mobile Menu */
+.menu-toggle {
+    display: none;
+    font-size: 1.8em;
+    cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(5px);
+        border-radius: 8px;
+        padding: 10px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
